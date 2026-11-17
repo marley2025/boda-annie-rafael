@@ -136,7 +136,8 @@
   input:focus,select:focus,textarea:focus{border-color:var(--clay)}
   textarea{resize:vertical;min-height:80px}
   .choice{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .choice input{position:absolute;opacity:0;pointer-events:none}
+  .choice label{position:relative}
+  .choice input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;left:50%;top:50%}
   .choice span{display:flex;align-items:center;justify-content:center;min-height:56px;border:1px solid rgba(46,33,27,.3);font:400 20px var(--serif);cursor:pointer;transition:.2s;text-align:center;padding:8px}
   .choice input:checked+span{background:var(--clay);border-color:var(--clay);color:#fff}
   .choice input:focus-visible+span{outline:2px solid var(--clay);outline-offset:3px}
@@ -149,8 +150,8 @@
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--clay-deep);color:var(--bg);text-align:center;padding:80px 24px 120px}
-  footer .names{font-size:clamp(48px,10vw,80px);margin:0}
-  footer .names .amp{display:inline;font-size:.6em;color:var(--peach);margin:0 .15em}
+  footer .names{font-size:clamp(40px,10vw,80px);margin:0}
+  footer .names .amp{display:inline;font-size:.6em;color:var(--peach);margin:0}
   footer p{font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:.7;margin-top:16px}
 
   /* ---------- CTA FLOTANTE ---------- */
@@ -194,6 +195,7 @@
   .r-bl2{left:calc(max(16px,5vw) + clamp(46px,5.6vw,74px));width:clamp(40px,4.6vw,60px);aspect-ratio:64/124}
   .r-br1{right:max(16px,5vw);width:clamp(52px,6.4vw,84px);aspect-ratio:80/124;transform:scaleX(-1)}
   .r-br2{right:calc(max(16px,5vw) + clamp(50px,6vw,80px));width:clamp(24px,2.8vw,36px);aspect-ratio:40/68}
+  .lead,.notes,.story p,.formal{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -408,7 +410,7 @@
 
 <footer>
   <svg class="botan sep" aria-hidden="true"><use href="#sep"/></svg>
-  <p class="names">Annie<span class="amp">&amp;</span>Rafael</p>
+  <p class="names">Annie <span class="amp">&amp;</span> Rafael</p>
   <p>25 · 02 · 2027 — Hurricane, Utah</p>
 </footer>
 
