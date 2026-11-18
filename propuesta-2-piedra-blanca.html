@@ -141,7 +141,7 @@
   .mono span{color:var(--blush);font-style:normal;font-size:.6em;margin:0 .2em}
   footer p{font:500 11px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:10px;text-wrap:balance}
 
-  .fab{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translate(-50%,180%);z-index:50;box-shadow:0 8px 24px rgba(43,47,51,.2)}
+  .fab{position:fixed;left:50%;width:max-content;max-width:calc(100vw - 32px);white-space:nowrap;text-align:center;text-indent:.2em;bottom:max(16px,env(safe-area-inset-bottom));transform:translate(-50%,180%);z-index:50;box-shadow:0 8px 24px rgba(43,47,51,.2)}
   .fab.show{transform:translate(-50%,0)}
 
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
