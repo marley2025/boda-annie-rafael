@@ -14,13 +14,16 @@
  * para que la misma URL siga funcionando.
  */
 
+// ID de la hoja (de su link: docs.google.com/spreadsheets/d/<ID>/edit)
+const HOJA_ID = '17Hck8pnse2081ZIAVFAvMJyNpnCwQpSnbs-FNEPFMSs';
+
 const ENCABEZADOS = ['Fecha', 'Nombre', 'Asistencia', 'Personas', 'Contacto', 'Mensaje'];
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
-    const hoja = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    const hoja = SpreadsheetApp.openById(HOJA_ID).getSheets()[0];
     if (hoja.getLastRow() === 0) {
       hoja.appendRow(ENCABEZADOS);
       hoja.setFrozenRows(1);
