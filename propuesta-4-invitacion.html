@@ -170,6 +170,7 @@
   .code{display:inline-block;margin-top:14px;padding:8px 16px;border:1px dashed var(--gold);font:600 15px var(--serif);letter-spacing:.18em;color:var(--gold-2)}
 
   /* RSVP */
+  .rsvp-error{margin:12px 0 0;font:500 15px var(--serif);color:var(--rose)}
   .adultos{font:italic 500 19px/1.5 var(--serif);color:var(--rose);margin:18px auto 4px}
   .adultos span{display:inline-block;margin-top:4px;font:600 11px var(--serif);font-style:normal;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
   .deadline{font:500 14px/1.7 var(--serif);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);max-width:340px;margin:8px auto 0}
@@ -428,8 +429,8 @@
       <h2>¡Te esperamos!</h2>
       <p class="deadline">Tu presencia es muy importante para nosotros. Por favor confirma antes del 25 de enero de 2027.</p>
       <p class="adultos">Con mucho cariño, celebraremos sin niños.<br><span>Evento solo para adultos</span></p>
-      <!-- Conectar a Formspree / Google Forms -->
-      <form data-rsvp novalidate>
+      <!-- data-endpoint: URL de la implementación de Apps Script (ver rsvp-google-sheets.gs). Vacío = modo demo -->
+      <form data-rsvp data-endpoint="" novalidate>
         <div><label for="n4">Nombre completo</label><input id="n4" name="nombre" autocomplete="name" required></div>
         <div>
           <label>Asistencia</label>

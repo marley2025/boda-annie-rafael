@@ -138,9 +138,28 @@
       const att = form.querySelector('[name="asistencia"]:checked');
       if (!name.value.trim()) { name.focus(); name.setAttribute('aria-invalid', 'true'); return; }
       if (!att) { form.querySelector('[name="asistencia"]').focus(); return; }
-      form.classList.add('sent');
-      const t = form.nextElementSibling;
-      if (t) { t.setAttribute('tabindex', '-1'); t.focus(); }
+      const done = () => {
+        form.classList.add('sent');
+        const t = form.nextElementSibling;
+        if (t) { t.setAttribute('tabindex', '-1'); t.focus(); }
+      };
+      const url = form.dataset.endpoint;
+      if (!url) { done(); return; }
+      const btn = form.querySelector('[type="submit"]');
+      const label = btn.textContent;
+      let err = form.querySelector('.rsvp-error');
+      if (err) err.remove();
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      // Apps Script no devuelve CORS: se envía como formulario simple y se da por recibido si la red responde
+      fetch(url, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
+        .then(done)
+        .catch(() => {
+          btn.disabled = false; btn.textContent = label;
+          err = document.createElement('p');
+          err.className = 'rsvp-error'; err.setAttribute('role', 'alert');
+          err.textContent = 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.';
+          btn.insertAdjacentElement('afterend', err);
+        });
     });
   });
 })();
