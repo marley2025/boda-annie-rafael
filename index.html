@@ -182,7 +182,7 @@
 
   /* RSVP */
   .rsvp-error{margin:12px 0 0;font:500 15px var(--serif);color:var(--rose)}
-  .lang{position:absolute;z-index:5;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));display:flex;padding:3px;border-radius:999px;background:rgba(58,12,20,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(251,244,226,.28)}
+  .lang{position:fixed;z-index:60;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px));display:flex;padding:3px;border-radius:999px;background:rgba(58,12,20,.78);box-shadow:0 4px 14px rgba(58,12,20,.18);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(251,244,226,.28)}
   .lang button{appearance:none;border:0;background:none;cursor:pointer;font:600 12px var(--serif);letter-spacing:.18em;padding:7px 10px 7px 12px;border-radius:999px;color:#FBF4E2;opacity:.75}
   .lang button[aria-pressed="true"]{background:#FBF4E2;color:var(--burgundy);opacity:1}
   .lang-foot{margin-top:6px}
