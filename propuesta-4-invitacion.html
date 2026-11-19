@@ -92,6 +92,8 @@
   .cap + .cap{margin-top:2px}
   .card p.txt{color:var(--muted);font-size:17px;max-width:400px;margin:12px auto 0;text-wrap:pretty}
   .card .btn{margin-top:22px}
+  .tiendas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin-top:22px}
+  .tiendas .btn{margin-top:0;min-width:130px}
   .rule{width:46px;height:1px;background:var(--pink);margin:22px auto}
 
   /* Sello de lacre marfil con ramita */
@@ -356,10 +358,14 @@
 
     <article class="card" id="regalos">
       <svg class="ic" aria-hidden="true"><use href="#i-regalo"/></svg>
-      <p class="cap">Fondo para</p>
-      <h2>Luna de miel</h2>
-      <p class="txt">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, una contribución para nuestra luna de miel será muy bien recibida.</p>
-      <a class="btn soft" href="#" target="_blank" rel="noopener">Detalles</a>
+      <h2>Mesa de regalos</h2>
+      <p class="txt">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, aquí están nuestras mesas de regalos.</p>
+      <!-- Mesas de regalos: cambia el texto y el href de cada botón; agrega o borra los que hagan falta -->
+      <div class="tiendas">
+        <a class="btn soft" href="#" target="_blank" rel="noopener">Amazon</a>
+        <a class="btn soft" href="#" target="_blank" rel="noopener">Target</a>
+        <a class="btn soft" href="#" target="_blank" rel="noopener">Walmart</a>
+      </div>
     </article>
 
     <article class="card" id="hashtag">
