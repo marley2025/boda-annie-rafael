@@ -209,6 +209,7 @@
     img.ph.side{aspect-ratio:auto;height:100%;min-height:100%}
     #padres{padding:56px 48px}
     #padres .padres{grid-template-columns:1fr 1fr;max-width:640px;margin:24px auto 0}
+    #lugar .frame{max-width:620px;margin-left:auto;margin-right:auto}
     #rsvp form{max-width:600px;margin-left:auto;margin-right:auto}
     #rsvp .deadline{max-width:520px}
     .ph.wide{aspect-ratio:21/9}
@@ -315,24 +316,14 @@
       </div>
     </article>
 
-    <article class="card" id="ceremonia">
+    <article class="card full" id="lugar">
       <svg class="ic" aria-hidden="true"><use href="#i-arco"/></svg>
-      <h2>Ceremonia</h2>
-      <p class="cap ink">[Nombre del lugar]</p>
-      <p class="cap">2:00 PM</p>
+      <h2>Ceremonia y recepción</h2>
+      <p class="cap ink">Bit &amp; Spur</p>
+      <p class="cap">Ceremonia 2:00 PM · Recepción 3:00 PM</p>
       <div class="frame"><div class="ph" data-label="Foto del lugar"></div></div>
       <p class="txt">1212 Zion Park Boulevard<br>Springdale, UT 84767</p>
-      <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=1212+Zion+Park+Boulevard,+Springdale,+UT+84767" target="_blank" rel="noopener">Cómo llegar</a>
-    </article>
-
-    <article class="card" id="recepcion">
-      <svg class="ic" aria-hidden="true"><use href="#i-copa"/></svg>
-      <h2>Recepción</h2>
-      <p class="cap ink">[Nombre del lugar]</p>
-      <p class="cap">3:00 PM</p>
-      <div class="frame"><div class="ph b" data-label="Foto del lugar"></div></div>
-      <p class="txt">1212 Zion Park Boulevard<br>Springdale, UT 84767</p>
-      <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=1212+Zion+Park+Boulevard,+Springdale,+UT+84767" target="_blank" rel="noopener">Cómo llegar</a>
+      <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Bit+%26+Spur,+1212+Zion+Park+Boulevard,+Springdale,+UT+84767" target="_blank" rel="noopener">Cómo llegar</a>
     </article>
 
     <article class="card sealed" id="itinerario">
@@ -368,23 +359,6 @@
       <h2>Luna de miel</h2>
       <p class="txt">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, una contribución para nuestra luna de miel será muy bien recibida.</p>
       <a class="btn soft" href="#" target="_blank" rel="noopener">Detalles</a>
-    </article>
-
-    <article class="card" id="hospedaje">
-      <svg class="ic" aria-hidden="true"><use href="#i-cabana"/></svg>
-      <h2>¿Dónde hospedarse?</h2>
-      <p class="txt">Reservamos un bloque de habitaciones en [Hotel] en Springdale. Al llamar, menciona la boda de Annie y Rafa y usa este código para tu descuento:</p>
-      <span class="code">[CÓDIGO]</span>
-      <p class="txt">Aeropuertos: St. George (SGU) a ~1 h · Las Vegas (LAS) a ~2 h 45 min.</p>
-      <a class="btn soft" href="#" target="_blank" rel="noopener">Reservar</a>
-    </article>
-
-    <article class="card" id="fin-de-semana">
-      <svg class="ic" aria-hidden="true"><use href="#i-bota"/></svg>
-      <h2>Fin de semana en Zion</h2>
-      <p class="txt">Si te quedas unos días más, acompáñanos después de la boda.</p>
-      <div class="dia"><h3>Viernes 26 de febrero</h3><p class="what">Caminata en Zion</p><p>[Sendero] · nos vemos a las [hora] en el Visitor Center, Springdale.</p></div>
-      <div class="dia"><h3>Sábado 27 de febrero</h3><p class="what">Brunch de despedida</p><p>[Lugar y hora]</p></div>
     </article>
 
     <article class="card" id="hashtag">
@@ -435,7 +409,7 @@ const WEDDING = {
   start: '2027-02-25T14:00:00-07:00',
   end:   '2027-02-25T23:30:00-07:00',
   title: 'Boda de Annie & Rafa',
-  location: '1212 Zion Park Boulevard, Springdale, UT 84767',
+  location: 'Bit & Spur, 1212 Zion Park Boulevard, Springdale, UT 84767',
 };
 </script>
 <script src="shared.js"></script>
