@@ -149,7 +149,7 @@
       const label = btn.textContent;
       let err = form.querySelector('.rsvp-error');
       if (err) err.remove();
-      btn.disabled = true; btn.textContent = 'Enviando…';
+      btn.disabled = true; btn.textContent = document.documentElement.lang === 'en' ? 'Sending…' : 'Enviando…';
       // Apps Script no devuelve CORS: se envía como formulario simple y se da por recibido si la red responde
       fetch(url, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
         .then(done)
@@ -157,7 +157,7 @@
           btn.disabled = false; btn.textContent = label;
           err = document.createElement('p');
           err.className = 'rsvp-error'; err.setAttribute('role', 'alert');
-          err.textContent = 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.';
+          err.textContent = document.documentElement.lang === 'en' ? 'It could not be sent. Check your connection and try again.' : 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.';
           btn.insertAdjacentElement('afterend', err);
         });
     });

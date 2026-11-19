@@ -182,6 +182,12 @@
 
   /* RSVP */
   .rsvp-error{margin:12px 0 0;font:500 15px var(--serif);color:var(--rose)}
+  .lang{position:absolute;z-index:5;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));display:flex;padding:3px;border-radius:999px;background:rgba(58,12,20,.42);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(251,244,226,.28)}
+  .lang button{appearance:none;border:0;background:none;cursor:pointer;font:600 12px var(--serif);letter-spacing:.18em;padding:7px 10px 7px 12px;border-radius:999px;color:#FBF4E2;opacity:.75}
+  .lang button[aria-pressed="true"]{background:#FBF4E2;color:var(--burgundy);opacity:1}
+  .lang-foot{margin-top:6px}
+  .lang-foot button{appearance:none;border:0;background:none;cursor:pointer;font:inherit;color:inherit;padding:4px 2px;text-decoration:underline;text-underline-offset:3px}
+  .lang-foot button[aria-pressed="true"]{text-decoration:none;font-weight:600}
   .adultos{font:italic 500 19px/1.5 var(--serif);color:var(--rose);margin:18px auto 4px}
   .adultos span{display:inline-block;margin-top:4px;font:600 11px var(--serif);font-style:normal;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
   .deadline{font:500 14px/1.7 var(--serif);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);max-width:340px;margin:8px auto 0}
@@ -329,15 +335,16 @@
 </svg>
 
 <header class="hero" id="inicio">
-  <div class="hero-ph"><img src="img/r197-900.jpg" srcset="img/r197-900.jpg 900w, img/r197-1600.jpg 1600w" sizes="(min-width:900px) 50vw, 100vw" alt="Annie y Rafa en el pasto al atardecer, con su perro" fetchpriority="high"></div>
+  <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" lang="es">ES</button><button type="button" data-lang="en" lang="en">EN</button></div>
+  <div class="hero-ph"><img src="img/r197-900.jpg" srcset="img/r197-900.jpg 900w, img/r197-1600.jpg 1600w" sizes="(min-width:900px) 50vw, 100vw" alt="Annie y Rafa en el pasto al atardecer, con su perro" data-en-alt="Annie and Rafa on the grass at sunset, with their dog" fetchpriority="high"></div>
   <div class="hero-txt">
     <div class="hero-seq">
       <p class="caps">Annie + Rafa</p>
-      <svg class="mono" role="img" aria-label="Monograma A y R"><use href="#mono"/></svg>
+      <svg class="mono" role="img" aria-label="Monograma A y R" data-en-aria-label="A and R monogram"><use href="#mono"/></svg>
       <p class="date">25 . 02 . 2027</p>
     </div>
     <div class="hero-cta">
-      <a class="btn soft open" href="#invitacion" data-open><svg class="ic" style="width:20px;height:20px" aria-hidden="true"><use href="#i-sobre"/></svg>Abrir invitación</a>
+      <a class="btn soft open" href="#invitacion" data-open><svg class="ic" style="width:20px;height:20px" aria-hidden="true"><use href="#i-sobre"/></svg><span data-en="Open invitation">Abrir invitación</span></a>
     </div>
   </div>
 </header>
@@ -346,89 +353,89 @@
   <div class="stack">
 
     <div class="intro full" id="invitacion">
-      <svg class="mono" role="img" aria-label="Monograma A y R"><use href="#mono"/></svg>
+      <svg class="mono" role="img" aria-label="Monograma A y R" data-en-aria-label="A and R monogram"><use href="#mono"/></svg>
     </div>
 
     <div class="duo full">
-      <img class="ph" src="img/r57-800.jpg" alt="Annie y Rafa a punto de besarse junto al río" loading="lazy" decoding="async">
-      <img class="ph" src="img/r135-800.jpg" alt="Annie y Rafa besándose en el campo" loading="lazy" decoding="async">
+      <img class="ph" src="img/r57-800.jpg" alt="Annie y Rafa a punto de besarse junto al río" data-en-alt="Annie and Rafa about to kiss by the river" loading="lazy" decoding="async">
+      <img class="ph" src="img/r135-800.jpg" alt="Annie y Rafa besándose en el campo" data-en-alt="Annie and Rafa kissing in a field" loading="lazy" decoding="async">
     </div>
 
     <article class="card sealed" id="principal">
       <svg class="seal" aria-hidden="true"><use href="#sello"/></svg>
-      <p class="cap">Tenemos el honor de</p>
-      <p class="cap">invitarte a nuestra boda</p>
+      <p class="cap" data-en="We are honored to">Tenemos el honor de</p>
+      <p class="cap" data-en="invite you to our wedding">invitarte a nuestra boda</p>
       <h2 style="font-size:clamp(56px,15vw,76px);margin:18px 0 0">Annie <span style="color:var(--gold)">&amp;</span> Rafa</h2>
       <div class="fecha">
-        <span class="m">Febrero</span>
-        <div class="row"><span>Jueves</span><b>25</b><span>2:00 PM</span></div>
+        <span class="m" data-en="February">Febrero</span>
+        <div class="row"><span data-en="Thursday">Jueves</span><b>25</b><span>2:00 PM</span></div>
         <span class="y">2027</span>
       </div>
-      <button class="cal" type="button" data-ics>Agregar al calendario</button>
+      <button class="cal" type="button" data-ics><span data-en="Add to calendar">Agregar al calendario</span></button>
       <div class="rule"></div>
-      <p class="solo">Solo faltan</p>
-      <div class="cd" data-countdown aria-label="Cuenta regresiva">
-        <div><b data-d>000</b><small>Días</small></div>
-        <div><b data-h>00</b><small>Horas</small></div>
-        <div><b data-m>00</b><small>Min</small></div>
-        <div><b data-s>00</b><small>Seg</small></div>
+      <p class="solo" data-en="Countdown">Solo faltan</p>
+      <div class="cd" data-countdown aria-label="Cuenta regresiva" data-en-aria-label="Countdown">
+        <div><b data-d>000</b><small data-en="Days">Días</small></div>
+        <div><b data-h>00</b><small data-en="Hours">Horas</small></div>
+        <div><b data-m>00</b><small data-en="Min">Min</small></div>
+        <div><b data-s>00</b><small data-en="Sec">Seg</small></div>
       </div>
     </article>
 
-    <img class="ph side" src="img/r228-1000.jpg" alt="Annie abrazando a Rafa sentados en el pasto" loading="lazy" decoding="async">
+    <img class="ph side" src="img/r228-1000.jpg" alt="Annie abrazando a Rafa sentados en el pasto" data-en-alt="Annie hugging Rafa as they sit on the grass" loading="lazy" decoding="async">
 
     <article class="card full" id="padres">
-      <h2>Con la bendición de Dios<br>y de nuestros padres</h2>
+      <h2 data-en="With the blessing of God<br>and our parents">Con la bendición de Dios<br>y de nuestros padres</h2>
       <div class="padres">
-        <div><p class="cap">De la novia</p><p>Alfonso Beltrán Montes<br>&amp; Patricia Beltrán García</p></div>
-        <div><p class="cap">Del novio</p><p>Cristóbal Heriberto Merlo Mercado<br>&amp; Carmen Liljehult Fuentes</p></div>
+        <div><p class="cap" data-en="Parents of the bride">De la novia</p><p>Alfonso Beltrán Montes<br>&amp; Patricia Beltrán García</p></div>
+        <div><p class="cap" data-en="Parents of the groom">Del novio</p><p>Cristóbal Heriberto Merlo Mercado<br>&amp; Carmen Liljehult Fuentes</p></div>
       </div>
     </article>
 
     <article class="card full" id="lugar">
       <svg class="ic" aria-hidden="true"><use href="#i-arco"/></svg>
-      <h2>Ceremonia y recepción</h2>
+      <h2 data-en="Ceremony &amp; reception">Ceremonia y recepción</h2>
       <p class="cap ink">Bit &amp; Spur</p>
-      <p class="cap">Ceremonia 2:00 PM<br>Recepción 3:00 PM</p>
-      <div class="frame"><img class="ph" src="img/lugar-bit-spur.jpg?v=2" alt="Jardín del Bit &amp; Spur con mesas para la boda, luces colgantes y los acantilados de Zion al fondo" loading="lazy" decoding="async"></div>
+      <p class="cap" data-en="Ceremony 2:00 PM<br>Reception 3:00 PM">Ceremonia 2:00 PM<br>Recepción 3:00 PM</p>
+      <div class="frame"><img class="ph" src="img/lugar-bit-spur.jpg?v=2" alt="Jardín del Bit &amp; Spur con mesas para la boda, luces colgantes y los acantilados de Zion al fondo" data-en-alt="The Bit &amp; Spur garden set for the wedding, with string lights and the Zion cliffs behind" loading="lazy" decoding="async"></div>
       <p class="txt">1212 Zion Park Boulevard<br>Springdale, UT 84767</p>
-      <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Bit+%26+Spur,+1212+Zion+Park+Boulevard,+Springdale,+UT+84767" target="_blank" rel="noopener">Cómo llegar</a>
+      <a class="btn soft" href="https://www.google.com/maps/search/?api=1&amp;query=Bit+%26+Spur,+1212+Zion+Park+Boulevard,+Springdale,+UT+84767" target="_blank" rel="noopener" data-en="Get directions">Cómo llegar</a>
     </article>
 
     <article class="card sealed" id="itinerario">
       <svg class="seal" aria-hidden="true"><use href="#sello"/></svg>
-      <h2>Itinerario</h2>
+      <h2 data-en="Schedule">Itinerario</h2>
       <ol class="tl">
-        <li><svg class="ic" aria-hidden="true"><use href="#i-arco"/></svg><div class="t"><time>2:00 PM</time><h4>Ceremonia</h4></div></li>
-        <li><svg class="ic" aria-hidden="true"><use href="#i-copa"/></svg><div class="t"><time>3:00 PM</time><h4>Cóctel y recepción</h4></div></li>
-        <li><svg class="ic" aria-hidden="true"><use href="#i-cena"/></svg><div class="t"><time>4:00 PM</time><h4>Cena</h4></div></li>
-        <li><svg class="ic" aria-hidden="true"><use href="#i-baile"/></svg><div class="t"><time>5:00 PM</time><h4>¡Fiesta!</h4></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-arco"/></svg><div class="t"><time>2:00 PM</time><h4 data-en="Ceremony">Ceremonia</h4></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-copa"/></svg><div class="t"><time>3:00 PM</time><h4 data-en="Cocktail hour &amp; reception">Cóctel y recepción</h4></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-cena"/></svg><div class="t"><time>4:00 PM</time><h4 data-en="Dinner">Cena</h4></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-baile"/></svg><div class="t"><time>5:00 PM</time><h4 data-en="Party!">¡Fiesta!</h4></div></li>
       </ol>
     </article>
 
     <article class="card" id="vestimenta">
-      <h2>Código de vestimenta</h2>
-      <p class="cap ink">Formal de campo</p>
-      <svg class="figuras" role="img" aria-label="Ilustración: ella con vestido largo, él con traje">
+      <h2 data-en="Dress code">Código de vestimenta</h2>
+      <p class="cap ink" data-en="Rustic formal">Formal de campo</p>
+      <svg class="figuras" role="img" aria-label="Ilustración: ella con vestido largo, él con traje" data-en-aria-label="Illustration: her in a long dress, him in a suit">
         <use href="#figuras" class="trazo2"/><use href="#figuras"/>
       </svg>
       <div class="dress">
-        <div><b>Ellas</b><span>Vestido largo o midi</span></div>
-        <div><b>Ellos</b><span>Traje, corbata opcional</span></div>
+        <div><b data-en="Women">Ellas</b><span data-en="Long or midi dress">Vestido largo o midi</span></div>
+        <div><b data-en="Men">Ellos</b><span data-en="Suit, tie optional">Traje, corbata opcional</span></div>
       </div>
-      <p class="warn">No usar blanco ni tonos similares<small>(reservados para la novia)</small></p>
-      <p class="txt">En febrero las noches en Springdale son frías: trae abrigo. Terreno de arena y roca, mejor tacón ancho.</p>
+      <p class="warn" data-en="Please avoid white or similar shades<small>(reserved for the bride)</small>">No usar blanco ni tonos similares<small>(reservados para la novia)</small></p>
+      <p class="txt" data-en="February nights in Springdale are cold, so bring a coat. The ground is sand and rock: block heels work best.">En febrero las noches en Springdale son frías: trae abrigo. Terreno de arena y roca, mejor tacón ancho.</p>
     </article>
 
     <div class="duo full">
-      <img class="ph" src="img/r12-800.jpg" alt="Rafa haciendo girar a Annie junto al río" loading="lazy" decoding="async">
-      <img class="ph" src="img/r283-800.jpg" alt="Annie y Rafa abrazados en un campo de pasto dorado" loading="lazy" decoding="async">
+      <img class="ph" src="img/r12-800.jpg" alt="Rafa haciendo girar a Annie junto al río" data-en-alt="Rafa twirling Annie by the river" loading="lazy" decoding="async">
+      <img class="ph" src="img/r283-800.jpg" alt="Annie y Rafa abrazados en un campo de pasto dorado" data-en-alt="Annie and Rafa embracing in a golden grass field" loading="lazy" decoding="async">
     </div>
 
     <article class="card full" id="regalos">
       <svg class="ic" aria-hidden="true"><use href="#i-regalo"/></svg>
-      <h2>Mesa de regalos</h2>
-      <p class="txt">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, aquí está nuestra mesa de regalos.</p>
+      <h2 data-en="Gift registry">Mesa de regalos</h2>
+      <p class="txt" data-en="Your presence is our greatest gift. If you would like to give us something, here is our registry.">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, aquí está nuestra mesa de regalos.</p>
       <!-- Mesas de regalos: cambia el texto y el href de cada botón; agrega o borra los que hagan falta -->
       <div class="tiendas">
         <a class="btn soft" href="https://www.amazon.com/wedding/guest-view/20D46U0LXPAO3" target="_blank" rel="noopener">Amazon</a>
@@ -437,41 +444,42 @@
 
     <article class="card sealed full" id="rsvp">
       <svg class="seal" aria-hidden="true"><use href="#sello"/></svg>
-      <h2>¡Te esperamos!</h2>
-      <p class="deadline">Tu presencia es muy importante para nosotros. Por favor confirma antes del 25 de enero de 2027.</p>
-      <p class="adultos">Con mucho cariño, celebraremos sin niños.<br><span>Evento solo para adultos</span></p>
+      <h2 data-en="We hope to see you!">¡Te esperamos!</h2>
+      <p class="deadline" data-en="Your presence means so much to us. Please RSVP by January 25, 2027.">Tu presencia es muy importante para nosotros. Por favor confirma antes del 25 de enero de 2027.</p>
+      <p class="adultos" data-en="With love, we will be celebrating without children.<br><span>Adults-only event</span>">Con mucho cariño, celebraremos sin niños.<br><span>Evento solo para adultos</span></p>
       <!-- data-endpoint: URL de la implementación de Apps Script (ver rsvp-google-sheets.gs). Vacío = modo demo -->
       <form data-rsvp data-endpoint="https://script.google.com/macros/s/AKfycbwXp9s_LBCVdjFdjQ79ix4_YIQelEw4VdWDOvxurYuHGPHkW8QB-eFSDDz4qk4DOkvzZQ/exec" novalidate>
-        <div><label for="n4">Nombre completo</label><input id="n4" name="nombre" autocomplete="name" required></div>
+        <div><label for="n4" data-en="Full name">Nombre completo</label><input id="n4" name="nombre" autocomplete="name" required></div>
         <div>
-          <label>Asistencia</label>
+          <label data-en="Will you attend?">Asistencia</label>
           <div class="yn">
-            <label><input type="radio" name="asistencia" value="si" required><span>Ahí estaré</span></label>
-            <label><input type="radio" name="asistencia" value="no"><span>No podré ir</span></label>
+            <label><input type="radio" name="asistencia" value="si" required><span data-en="I’ll be there">Ahí estaré</span></label>
+            <label><input type="radio" name="asistencia" value="no"><span data-en="Can’t make it">No podré ir</span></label>
           </div>
         </div>
         <div class="row2">
-          <div><label for="g4">Personas</label><select id="g4" name="personas"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
-          <div><label for="e4">Correo o teléfono</label><input id="e4" name="contacto" autocomplete="email"></div>
+          <div><label for="g4" data-en="Guests">Personas</label><select id="g4" name="personas"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+          <div><label for="e4" data-en="Email or phone">Correo o teléfono</label><input id="e4" name="contacto" autocomplete="email"></div>
         </div>
-        <div><label for="m4">Mensaje para los novios</label><textarea id="m4" name="mensaje" placeholder="Opcional"></textarea></div>
-        <div style="text-align:center"><button class="btn" type="submit">Confirmar</button></div>
+        <div><label for="m4" data-en="Message for the couple">Mensaje para los novios</label><textarea id="m4" name="mensaje" placeholder="Opcional" data-en-placeholder="Optional"></textarea></div>
+        <div style="text-align:center"><button class="btn" type="submit" data-en="Send RSVP">Confirmar</button></div>
       </form>
-      <div class="thanks" role="status"><h3>¡Gracias!</h3><p class="txt">Nos vemos en el sendero.</p></div>
+      <div class="thanks" role="status"><h3 data-en="Thank you!">¡Gracias!</h3><p class="txt" data-en="See you on the trail.">Nos vemos en el sendero.</p></div>
     </article>
 
-    <img class="ph wide full" src="img/r266-1200.jpg" alt="Annie y Rafa caminando por un campo dorado" loading="lazy" decoding="async">
+    <img class="ph wide full" src="img/r266-1200.jpg" alt="Annie y Rafa caminando por un campo dorado" data-en-alt="Annie and Rafa walking through a golden field" loading="lazy" decoding="async">
 
 
   </div>
 </main>
 <footer>
-  <svg class="mono" role="img" aria-label="Monograma A y R"><use href="#mono"/></svg>
-  <p>Annie &amp; Rafa · 25 de febrero de 2027 · Springdale, Utah</p>
-  <small class="credit">Fotos: Photos by Saya</small>
+  <svg class="mono" role="img" aria-label="Monograma A y R" data-en-aria-label="A and R monogram"><use href="#mono"/></svg>
+  <p data-en="Annie &amp; Rafa · February 25, 2027 · Springdale, Utah">Annie &amp; Rafa · 25 de febrero de 2027 · Springdale, Utah</p>
+  <p class="lang-foot"><button type="button" data-lang="es" lang="es">Español</button> · <button type="button" data-lang="en" lang="en">English</button></p>
+  <small class="credit" data-en="Photos: Photos by Saya">Fotos: Photos by Saya</small>
 </footer>
 
-<a class="btn fab" href="#rsvp" data-fab>Confirmar asistencia</a>
+<a class="btn fab" href="#rsvp" data-fab data-en="RSVP">Confirmar asistencia</a>
 
 <script>
 const WEDDING = {
@@ -480,6 +488,41 @@ const WEDDING = {
   title: 'Boda de Annie & Rafa',
   location: 'Bit & Spur, 1212 Zion Park Boulevard, Springdale, UT 84767',
 };
+
+/* Idioma: ?lang=en|es > elección guardada > idioma del teléfono/navegador (español si empieza con "es", si no inglés) */
+(function(){
+  var T={es:{title:document.title,desc:'',cal:WEDDING.title},en:{title:'Annie + Rafa · Invitation',cal:'Annie & Rafa’s Wedding'}};
+  var ATTRS=['alt','aria-label','placeholder'];
+  function guarda(l){ try{ localStorage.setItem('idioma',l); }catch(e){} }
+  function inicial(){
+    var q=(location.search.match(/[?&]lang=(es|en)/)||[])[1]; if(q){ guarda(q); return q; }
+    try{ var g=localStorage.getItem('idioma'); if(g==='es'||g==='en') return g; }catch(e){}
+    var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'es'];
+    return /^es\b/i.test(ls[0]||'')?'es':'en';
+  }
+  function aplica(l){
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if(el.dataset.es===undefined) el.dataset.es=el.innerHTML;
+      el.innerHTML = l==='en' ? el.dataset.en : el.dataset.es;
+    });
+    ATTRS.forEach(function(a){
+      document.querySelectorAll('[data-en-'+a+']').forEach(function(el){
+        var k='data-es-'+a; if(!el.hasAttribute(k)) el.setAttribute(k, el.getAttribute(a)||'');
+        el.setAttribute(a, el.getAttribute(l==='en' ? 'data-en-'+a : k));
+      });
+    });
+    document.title=T[l].title;
+    WEDDING.title=T[l].cal;
+    document.querySelectorAll('a.cal').forEach(function(a){ a.href=a.href.replace(/([?&]text=)[^&]*/,'$1'+encodeURIComponent(T[l].cal)); });
+    document.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.lang===l ? 'true' : 'false'); });
+  }
+  aplica(inicial());
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-lang]'); if(!b) return;
+    guarda(b.dataset.lang); aplica(b.dataset.lang);
+  });
+})();
 
 /* Portada cerrada: bloquea el scroll hasta "Abrir invitación" (si llegan con un #enlace, no se bloquea) */
 (function(){
