@@ -57,7 +57,7 @@
   .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
   /* ---------- PORTADA ---------- */
-  .hero{position:relative;min-height:100svh;display:grid;color:var(--ivory);text-align:center;background:var(--night)}
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:grid;color:var(--ivory);text-align:center;background:var(--night)}
   .hero-ph{position:absolute;inset:0;overflow:hidden}
   .hero-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;display:block}
   .hero-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(48,10,17,.72) 0%,rgba(48,10,17,.42) 38%,rgba(48,10,17,0) 56%,rgba(48,10,17,.04) 72%,rgba(48,10,17,.6) 100%)}
@@ -71,7 +71,8 @@
   .hero .hint{margin-top:12px;font:italic 500 15px var(--serif);letter-spacing:.08em;opacity:.9}
   .credit{display:block;margin-top:6px;font:500 11px var(--serif);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
   @media (min-width:900px){
-    .hero{grid-template-columns:1fr 1fr}
+    .hero{grid-template-columns:1fr 1fr;grid-template-rows:100%;height:100vh;height:100svh;min-height:560px}
+    .hero-ph{height:100%;min-height:0}
     .hero-ph{position:relative;grid-column:2;grid-row:1}
     .hero-ph::after{background:linear-gradient(90deg,rgba(48,10,17,.3),rgba(48,10,17,0) 30%)}
     .hero-txt{grid-column:1;grid-row:1;justify-content:center;gap:48px;padding:80px 60px}
@@ -220,7 +221,12 @@
     .ph.wide{aspect-ratio:21/9}
     .card p.txt{max-width:440px}
   }
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  /* Portada como sobre cerrado: sin scroll hasta tocar "Abrir invitación" */
+  html.cerrada,html.cerrada body{overflow:hidden;height:100%;overscroll-behavior:none}
+  html.cerrada .fab{display:none}
+  html.cerrada .open{animation:llama 2.4s ease-in-out 1.6s infinite}
+  @keyframes llama{0%,100%{transform:translateY(0);box-shadow:0 2px 0 rgba(139,42,51,.22),0 4px 10px rgba(139,42,51,.1)}50%{transform:translateY(-3px);box-shadow:0 2px 0 rgba(139,42,51,.22),0 10px 22px rgba(139,42,51,.25)}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}html.cerrada .open{animation:none}}
   @media (max-width:480px){.tones{display:grid;grid-template-columns:repeat(2,auto);justify-content:center;gap:16px 40px}}
   @media (max-width:400px){
     .row2,.dress{grid-template-columns:1fr}
@@ -469,6 +475,32 @@ const WEDDING = {
   title: 'Boda de Annie & Rafa',
   location: 'Bit & Spur, 1212 Zion Park Boulevard, Springdale, UT 84767',
 };
+
+/* Portada cerrada: bloquea el scroll hasta "Abrir invitación" (si llegan con un #enlace, no se bloquea) */
+(function(){
+  var root=document.documentElement, btn=document.querySelector('[data-open]');
+  if(!btn) return;
+  var hash=location.hash.replace('#','');
+  if(hash && hash!=='inicio') return;
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.scrollTo(0,0);
+  root.classList.add('cerrada');
+  var bloquear=function(e){ if(root.classList.contains('cerrada')) e.preventDefault(); };
+  window.addEventListener('touchmove',bloquear,{passive:false});
+  window.addEventListener('wheel',bloquear,{passive:false});
+  window.addEventListener('keydown',function(e){
+    if(root.classList.contains('cerrada') && ['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].indexOf(e.key)>-1 && e.target===document.body) e.preventDefault();
+  });
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    root.classList.remove('cerrada');
+    window.removeEventListener('touchmove',bloquear);
+    window.removeEventListener('wheel',bloquear);
+    requestAnimationFrame(function(){
+      document.getElementById('invitacion').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    });
+  });
+})();
 </script>
 <script src="shared.js"></script>
 </body>
