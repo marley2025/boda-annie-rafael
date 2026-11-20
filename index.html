@@ -191,6 +191,9 @@
   .lang-foot{margin-top:6px}
   .lang-foot button{appearance:none;border:0;background:none;cursor:pointer;font:inherit;color:inherit;padding:4px 2px;text-decoration:underline;text-underline-offset:3px}
   .lang-foot button[aria-pressed="true"]{text-decoration:none;font-weight:600}
+  .deadline b{display:inline-block;margin-top:6px;font-weight:600;font-size:17px;color:var(--rose)}
+  .cerrado{margin:22px auto 4px;max-width:420px;font:italic 500 19px/1.55 var(--serif);color:var(--rose)}
+  html.rsvp-cerrado [data-fab]{display:none}
   .adultos{font:italic 500 19px/1.5 var(--serif);color:var(--rose);margin:18px auto 4px}
   .adultos span{display:inline-block;margin-top:4px;font:600 11px var(--serif);font-style:normal;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
   .deadline{font:500 14px/1.7 var(--serif);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);max-width:340px;margin:8px auto 0}
@@ -448,10 +451,10 @@
     <article class="card sealed full" id="rsvp">
       <svg class="seal" aria-hidden="true"><use href="#sello"/></svg>
       <h2 data-en="We hope to see you!">¡Te esperamos!</h2>
-      <p class="deadline" data-en="Your presence means so much to us. Please RSVP by January 25, 2027.">Tu presencia es muy importante para nosotros. Por favor confirma antes del 25 de enero de 2027.</p>
+      <p class="deadline" data-en="Your presence means so much to us. Please RSVP by<br><b>January 25, 2027</b>">Tu presencia es muy importante para nosotros. Por favor confirma antes del<br><b>25 de enero de 2027</b></p>
       <p class="adultos" data-en="With love, we will be celebrating without children.<br><span>Adults-only event</span>">Con mucho cariño, celebraremos sin niños.<br><span>Evento solo para adultos</span></p>
       <!-- data-endpoint: URL de la implementación de Apps Script (ver rsvp-google-sheets.gs). Vacío = modo demo -->
-      <form data-rsvp data-endpoint="https://script.google.com/macros/s/AKfycbwXp9s_LBCVdjFdjQ79ix4_YIQelEw4VdWDOvxurYuHGPHkW8QB-eFSDDz4qk4DOkvzZQ/exec" novalidate>
+      <form data-rsvp data-cierre="2027-01-26T00:00:00-07:00" data-endpoint="https://script.google.com/macros/s/AKfycbwXp9s_LBCVdjFdjQ79ix4_YIQelEw4VdWDOvxurYuHGPHkW8QB-eFSDDz4qk4DOkvzZQ/exec" novalidate>
         <div><label for="n4" data-en="Full name">Nombre completo</label><input id="n4" name="nombre" autocomplete="name" required></div>
         <div>
           <label data-en="Will you attend?">Asistencia</label>
@@ -467,6 +470,7 @@
         <div><label for="m4" data-en="Message for the couple">Mensaje para los novios</label><textarea id="m4" name="mensaje" placeholder="Opcional" data-en-placeholder="Optional"></textarea></div>
         <div style="text-align:center"><button class="btn" type="submit" data-en="Send RSVP">Confirmar</button></div>
       </form>
+      <p class="cerrado" hidden data-en="The RSVP deadline has passed. If you have any questions, please contact the couple directly.">El plazo para confirmar ya terminó. Si tienes alguna duda, comunícate directamente con los novios.</p>
       <div class="thanks" role="status"><h3 data-en="Thank you!">¡Gracias!</h3><p class="txt" data-en="See you on the trail.">Nos vemos en el sendero.</p></div>
     </article>
 
@@ -525,6 +529,15 @@ const WEDDING = {
     var b=e.target.closest('[data-lang]'); if(!b) return;
     guarda(b.dataset.lang); aplica(b.dataset.lang);
   });
+})();
+
+/* Fecha límite de confirmación: después del 25 de enero de 2027 (hora de Utah) se oculta el formulario */
+(function(){
+  var f=document.querySelector('[data-rsvp][data-cierre]'); if(!f) return;
+  if(Date.now() < new Date(f.dataset.cierre).getTime()) return;
+  f.hidden=true; f.removeAttribute('data-rsvp');
+  var c=document.querySelector('#rsvp .cerrado'); if(c) c.hidden=false;
+  document.documentElement.classList.add('rsvp-cerrado');
 })();
 
 /* Portada cerrada: bloquea el scroll hasta "Abrir invitación" (si llegan con un #enlace, no se bloquea) */
